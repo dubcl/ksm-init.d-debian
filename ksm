@@ -20,11 +20,13 @@ set -e
 
 do_start() {
     echo 1 > /sys/kernel/mm/ksm/run
+    echo 1000 >/sys/kernel/mm/ksm/sleep_millisecs
     log_success_msg "Enabling Kernel Samepage Merging"
 }
  
 do_stop() {
     echo 0 > /sys/kernel/mm/ksm/run
+    echo 20 >/sys/kernel/mm/ksm/sleep_millisecs
     log_success_msg "Disabling Kernel Samepage Merging"
 }
 
